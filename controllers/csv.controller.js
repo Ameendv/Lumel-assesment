@@ -21,16 +21,18 @@ router.get("/", async (req, res, next) => {
     }
 })
 
-// cron.schedule('31 12 * * *', async () => {
-//     try {
+//this cron will run every day at 12:00 PM
+
+cron.schedule('00 12 * * *', async () => {
+    try {
   
-//       const response = await csvServices.uploadCsv()      
+      const response = await csvServices.uploadCsv()      
   
-//       console.log('Daily job completed');
-//     } catch (err) {
-//       console.error('Error running daily job:', err);
-//     }
-//   });
+      console.log('cron done for the day');
+    } catch (err) {
+      console.error('Error in cron', err);
+    }
+  });
 
 
 

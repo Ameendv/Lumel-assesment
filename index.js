@@ -35,6 +35,7 @@ app.enable("trust proxy");
 
 // api routes
 app.use("/api/csv-script", require("./controllers/csv.controller"));
+app.use("/api/customer", require("./controllers/customer.controller"));
 
 
 
