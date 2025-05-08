@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
-const db = require('../helpers/db')
+const db = require('../helpers/db');
+const CustomError = require('../utils/customError');
 console.log(db, 'df')
 
 const uploadCsv = () => {
@@ -85,9 +86,9 @@ const uploadCsv = () => {
                     }
                 }
 
-                console.log('CSV data loaded into the database successfully');
+                return {body: {}, message: 'CSV data uploaded successfully'}
             } catch (error) {
-                console.error('Error loading CSV data:', error);
+                throw new CustomError(error.message || `Something went wrong`, 500)
             }
         });
 
