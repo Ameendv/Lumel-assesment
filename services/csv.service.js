@@ -25,7 +25,7 @@ const uploadCsv = () => {
                 for (let row of results) {
 
                     const customerData = {
-                        id: row['Customer ID'], 
+                        id: row['Customer ID'],
                         name: row['Customer Name'],
                         email: row['Customer Email'],
                         address: row['Customer Address'],
@@ -37,7 +37,7 @@ const uploadCsv = () => {
                         category: row['Category'],
                         region: row['Region'],
                     }
-                    const orderData= {
+                    const orderData = {
                         id: row['Order ID'],
                         customer_id: row['Customer ID'],
                         product_id: row['Product ID'],
@@ -54,7 +54,7 @@ const uploadCsv = () => {
 
 
 
-                    
+
                     console.log(row, customerData)
                 }
 
@@ -63,7 +63,7 @@ const uploadCsv = () => {
                     console.log(existingCustomer, 'existingCustomer')
                     if (!existingCustomer) {
                         await db.Customer.create(customer)
-                    }else{
+                    } else {
                         await db.Customer.update(customer, { where: { id: customer.id } })
                     }
                 }
@@ -75,8 +75,8 @@ const uploadCsv = () => {
                     else {
                         await db.Products.update(product, { where: { id: product.id } })
                     }
-            }
-                for(let order of orderDetails) {
+                }
+                for (let order of orderDetails) {
                     const existingOrder = await db.Order.findOne({ where: { id: order.id } });
                     console.log(order, 'existingOrder')
                     if (!existingOrder) {
@@ -85,12 +85,15 @@ const uploadCsv = () => {
                         await db.Order.update(order, { where: { id: order.id } })
                     }
                 }
+                console.log('success')
 
-                return {body: {}, message: 'CSV data uploaded successfully'}
             } catch (error) {
-                throw new CustomError(error.message || `Something went wrong`, 500)
+                console.log(error, 'hahahaha')
+                throw error
             }
         });
+
+    return { body: {}, message: 'CSV data uploaded successfully' }
 
 }
 
