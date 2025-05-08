@@ -77,6 +77,7 @@ const uploadCsv = () => {
             }
                 for(let order of orderDetails) {
                     const existingOrder = await db.Order.findOne({ where: { id: order.id } });
+                    console.log(order, 'existingOrder')
                     if (!existingOrder) {
                         await db.Order.create(order)
                     } else {

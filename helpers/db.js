@@ -47,11 +47,12 @@ async function initialize() {
   db.Order = require('../models/order.model')(sequelize)
 
 
-  db.Customer.hasMany(db.Order, { foreignKey: 'id', as: 'orders' });
-  db.Order.belongsTo(db.Customer, { foreignKey: 'id', as: 'customer' });
+db.Customer.hasMany(db.Order, { foreignKey: 'customer_id', as: 'orders' });
+db.Order.belongsTo(db.Customer, { foreignKey: 'customer_id', as: 'customer' });
 
-  db.Products.hasMany(db.Order, { foreignKey: 'id', as: 'orders' });
-  db.Order.belongsTo(db.Products, { foreignKey: 'id', as: 'product' });
+db.Products.hasMany(db.Order, { foreignKey: 'product_id', as: 'orders' });
+db.Order.belongsTo(db.Products, { foreignKey: 'product_id', as: 'product' });
+
 
    
 
