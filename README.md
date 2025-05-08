@@ -1,10 +1,22 @@
-# KYC management Workflow Backend System
+# Lumel Assessment
 
-This repository contains the backend and a basic frontend implementation for the simplified **Know Your Customer (KYC)**  workflow application, including authentication, role-based access control , KYC management, and reporting features.
+This is a Node.js + Express backend project built for the Lumel assessment. It uses Sequelize ORM and MySQL for handling customer, product, and order data. The application provides APIs for fetching key metrics such as total customers, total orders, and average order values within a date range. It also includes a daily cron job for reporting.
 
-## admin credentials(testing)
-email: admin@gmail.com   
-password: 123123123
+
+
+---
+
+##  Tech Stack
+
+###  Backend
+- Node.js
+- Express.js
+- MySQL
+- Sequelize ORM
+- node-cron
+- dotenv
+
+---
 
 ## Requirements
 
@@ -15,49 +27,49 @@ Pre requisites
 - [MySQL](https://dev.mysql.com/downloads/installer/) 
 
 
-## Installation
+## 🔧 Setup Instructions
 
-1. **Clone the repository**:
+1. **Clone the repo**  
    ```bash
-   git clone https://github.com/Ameendv/kyc-management.git
-   cd kyc-management
+   git clone https://github.com/Ameendv/Lumel-assesment.git
+   cd Lumel-assesment
 
-2. **Install dependencies**:
-    ```bash
-     npm install
+
+###  Backend (Node.js + Express)
+1. Navigate to the backend folder:
+   ```bash
+   cd backend
+2. Install dependencies:
+   ```bash
+   npm install
    
-3.**Set up environment variables**
-
-4.**Database seeding**: 
-
-    npm run setup
-
-5.**Start backend**:
-
-    npm start
-
-
-### Frontend
-
-**Run** 
-
-     
-     cd frontend
-
-**Install dependencies**
-           
-     npm install
-
-**Run Frontend**
-
-     npm run dev
+3. Create env file:
+   ```bash
+         PORT=8080
+         DB_HOST=localhost
+         DB_PORT=3306
+         DB_USER=root
+         DB_PASSWORD=password
+         DB_NAME=db name
+         APP_SECRET=secret
 
 
-## API Documentation
+4. Start backend server:
+   ```bash
+   npm start
 
-You can access the API documentation for this project using the following link:
+###  API Endpoints
 
-[Postman API Documentation](https://documenter.getpostman.com/view/21629284/2sAYQfEq2o)
+| Method | Endpoint                                         | Query Parameters                | Description                                                        |
+|--------|--------------------------------------------------|----------------------------------|--------------------------------------------------------------------|
+| GET    | `/api/csv-script`                                | –                                | Runs the CSV import script to populate the database.               |
+| GET    | `/api/customer/count`                            | `start_date`, `end_date`         | Returns total number of customers within a date range.             |
+| GET    | `/api/customer/orders-count`                     | `start_date`, `end_date`         | Returns total number of orders placed within a date range.         |
+| GET    | `/api/customer/orders-average`                   | `start_date`, `end_date`         | Returns average order value within a date range.                   |
 
 
 
+###  Database Schema
+
+
+![image](https://github.com/user-attachments/assets/43c95108-6b14-4651-88d1-86e075d88b80)
