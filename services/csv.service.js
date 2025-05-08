@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
 const db = require('../helpers/db');
-const CustomError = require('../utils/customError');
+
 console.log(db, 'df')
 
 const uploadCsv = () => {

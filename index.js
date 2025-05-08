@@ -46,7 +46,7 @@ app.use(errorHandler);
 
 // start server
 const port =
-  process.env.PORT ;
+  process.env.PORT;
 
 
 app.get("/", async (req, res) => {

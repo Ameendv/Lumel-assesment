@@ -25,14 +25,14 @@ router.get("/", async (req, res, next) => {
 
 cron.schedule('00 12 * * *', async () => {
     try {
-  
-      const response = await csvServices.uploadCsv()      
-  
-      console.log('cron done for the day');
+
+        const response = await csvServices.uploadCsv()
+
+        console.log('cron done for the day');
     } catch (err) {
-      console.error('Error in cron', err);
+        console.error('Error in cron', err);
     }
-  });
+});
 
 
 
